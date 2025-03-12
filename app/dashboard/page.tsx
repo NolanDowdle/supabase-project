@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { supabase } from '../../supabase';
 import { useRouter } from 'next/navigation';
 import React from 'react';
+import SidePanel from '../components/SidePanel';
 
 export default function Dashboard() {
   const [user, setUser] = useState(null);
@@ -24,10 +25,13 @@ export default function Dashboard() {
   };
 
   return (
-    <div className="dashboard-container">
-      <h1>Dashboard</h1>
-      {user && <p>Welcome, {user.email}</p>}
-      <button className="logout-btn" onClick={handleLogout}>Logout</button>
+    <div className="dashboard-layout">
+      <SidePanel />
+      <div className="dashboard-container">
+        <h1>Dashboard</h1>
+        {user && <p>Welcome, {user.email}</p>}
+        <button className="logout-btn" onClick={handleLogout}>Logout</button>
+      </div>
     </div>
   );
 }
